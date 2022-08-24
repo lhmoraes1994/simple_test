@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>teste1</title>
+</head>
+<body>
+    
+</body>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+<script>
+ var svg = d3.select("body")
+        .append("svg")
+        .attr({
+            "width":600,
+            "height":400
+        });
+
+
+
+
+
+d3.xml("http://upload.wikimedia.org/wikipedia/commons/a/a0/Circle_-_black_simple.svg", function(error, documentFragment) {
+        if (error) {console.log(error); return;}
+    
+        var svgNode = documentFragment
+                    .getElementsByTagName("svg")[0];
+    
+        svg.node().appendChild(svgNode);
+
+        var innerSVG = svg.select("svg");
+    
+        innerSVG.transition().duration(1000).delay(1000)
+              .select("circle")
+              .attr("r", 100);
+
+    });
+    </script>
+
+</html>
